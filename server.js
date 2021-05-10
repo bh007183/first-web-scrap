@@ -35,10 +35,16 @@ axios
     }
   })
   .catch((err) => console.log(err));
-}, 10000);
+}, 1000 * 60 * 60 * 12);
 
 app.listen(PORT, function () {
   console.log("App listening on PORT http://localhost:" + PORT);
 });
+
+setInterval(() => {
+  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  console.log(time)
+  
+}, 120000);
 
 
