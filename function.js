@@ -7,7 +7,7 @@ const client = require("twilio")(accountSid, authToken);
 
 // ???????             string  integer   string
                                                 //    format = +19072312406    run every ms
-const runner = function (url, company, titleToLookFor, notificationPhoneNumber, interval) {
+const runner = async function (url, company, titleToLookFor, notificationPhoneNumber, interval) {
 let numberOfJobs;
 axios
     .get(url)
@@ -45,6 +45,9 @@ setInterval(() => {
       }
     })
     .catch((err) => console.log(err));
+    let today = new Date()
+    var T = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    console.log(T)
 }, interval);
 };
 

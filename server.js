@@ -18,6 +18,7 @@ app.use(express.static("public"));
 
 runner("https://www.trilogyed.com/about/careers", "Trilogy", "Teaching Assistant", +19072312406, 1000 * 60 * 60 * 3)
 runner("https://www.trilogyed.com/about/careers", "Trilogy", "Learning Assistant", +19072312406, 1000 * 60 * 60 * 3)
+runner("https://www.highspot.com/careers", "HighSpot", "Accelerate", +19072312406, 1000 * 60 * 60 * 3)
 // setInterval(() => {
 // axios
 //   .get("https://www.trilogyed.com/about/careers")
@@ -43,18 +44,13 @@ runner("https://www.trilogyed.com/about/careers", "Trilogy", "Learning Assistant
 //     }
 //   })
 //   .catch((err) => console.log(err));
+  
 // }, 1000 * 60 * 60 * 3);
 
 app.listen(PORT, function () {
   console.log("App listening on PORT http://localhost:" + PORT);
 });
 
-setInterval(() => {
-  let today = new Date()
-  var T = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  console.log(T)
-  console.log(numberOfJobs)
-  
-}, 1000 * 60 * 60 * 3);
+
 
 
