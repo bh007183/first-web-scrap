@@ -6,6 +6,7 @@ require("dotenv").config();
 var PORT = process.env.PORT || 8070;
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
+const MyPhone = process.env.PERSONAL_PHONE
 const client = require("twilio")(accountSid, authToken);
 const runner = require("./function.js")
 let numberOfJobs = 16;
@@ -16,36 +17,10 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static("public"));
 
-runner("https://www.trilogyed.com/about/careers", "Trilogy", "Teaching Assistant", +19072312406, 1000 * 60 * 60 * 3)
-runner("https://www.trilogyed.com/about/careers", "Trilogy", "Learning Assistant", +19072312406, 1000 * 60 * 60 * 3)
-runner("https://www.highspot.com/careers", "HighSpot", "Accelerate", +19072312406, 1000 * 60 * 60 * 3)
-// setInterval(() => {
-// axios
-//   .get("https://www.trilogyed.com/about/careers")
-//   .then(function (res) {
-//     let TA = res.data.split("Teaching Assistant").length - 1;
-//     let LA = res.data.split("Learning Assistant").length - 1;
-    
-//     if (TA + LA > numberOfJobs){
+runner("https://www.trilogyed.com/about/careers", "Trilogy", "Teaching Assistant", MyPhone, 10000)
+runner("https://www.trilogyed.com/about/careers", "Trilogy", "Learning Assistant", MyPhone, 1000 * 60 * 60 * 3)
+runner("https://www.highspot.com/careers", "HighSpot", "Accelerate", MyPhone, 1000 * 60 * 60 * 3)
 
-
-//       client.messages
-//         .create({
-//           body: "Trilogy has new job listings for TA || LA positions",
-//           from: "+17044198270",
-//           to: "+19072312406",
-//         })
-//         .then(function (message) {
-//           numberOfJobs = TA + LA;
-//           res.json(message.sid);
-//         });
-//     }else{
-//       numberOfJobs = TA + LA;
-//     }
-//   })
-//   .catch((err) => console.log(err));
-  
-// }, 1000 * 60 * 60 * 3);
 
 app.listen(PORT, function () {
   console.log("App listening on PORT http://localhost:" + PORT);
