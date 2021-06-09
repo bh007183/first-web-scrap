@@ -30,8 +30,6 @@ const runner = async function (
       .then(function (res) {
         //  jobsArr = number of indexes in the returned split on the page
         let jobsArr = res.data.split(titleToLookFor).length - 1;
-        console.log(jobsArr);
-        console.log(numberOfJobs);
         if (jobsArr > numberOfJobs) {
           console.log("this should fire");
           client.messages
