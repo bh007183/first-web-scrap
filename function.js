@@ -19,8 +19,7 @@ const runner = async function (
   axios
     .get(url)
     .then(function (res) {
-      // numberOfJobs = res.data.split(titleToLookFor).length - 1;
-      numberOfJobs = 10
+      numberOfJobs = res.data.split(titleToLookFor).length - 1;
       console.log("Start " + numberOfJobs + " " + titleToLookFor);
     })
     .catch((err) => console.log(err));
